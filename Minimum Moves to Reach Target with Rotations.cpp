@@ -3,16 +3,16 @@ public:
     vector<vector<int>> dirs={{0,1,0,1},{1,0,1,0},{0,0,1,-1},{0,0,-1,1}}; // {right,down,cw,ccw }
     
     bool validpos(vector<int>& cur,int idx,vector<vector<int>>& grid,int sz ) {
-        if(cur[0] < 0 || cur[0] >= sz-1 || cur[1] < 0 || cur[1] >= sz-1 || cur[2] < 0 || cur[2] >= sz-1 || cur[3] < 0 || cur[3] >= sz-1 ) return false;
+        if(cur[0] < 0 || cur[0] >= sz || cur[1] < 0 || cur[1] >= sz || cur[2] < 0 || cur[2] >= sz || cur[3] < 0 || cur[3] >= sz ) return false;
         
         //right
-        if(idx == 0 && grid[cur[2]][cur[3] +1] == 1) return false;
+        if(idx == 0 && grid[cur[2]][cur[3]] == 1) return false;
         //down
-        if(idx == 1 && (grid[cur[0]+1][cur[1]] == 1 || grid[cur[2]+1][cur[3]] == 1) ) return false;
+        if(idx == 1 && (grid[cur[0]][cur[1]] == 1 || grid[cur[2]][cur[3]] == 1) ) return false;
         //cw
-        if(idx == 2 && (cur[4] == 1 || grid[cur[0]+1][cur[1]] == 1 || grid[cur[2]+1][cur[3]] == 1)) return false;
+        if(idx == 2 && (cur[4] == 1 || grid[cur[0]][cur[1]] == 1 || grid[cur[2]][cur[3]] == 1)) return false;
         //ccw
-        if(idx == 3 && (cur[4] == 0 || grid[cur[0]][cur[1]+1] == 1 || grid[cur[2]][cur[3]+1] == 1)) return false;
+        if(idx == 3 && (cur[4] == 0 || grid[cur[0]][cur[1]] == 1 || grid[cur[2]][cur[3]] == 1)) return false;
         
         return true;
      }
