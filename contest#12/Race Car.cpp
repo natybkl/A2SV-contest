@@ -1,8 +1,6 @@
 class Solution {
 public: 
     int racecar(int target) {
-
-        vector<int> Node; 
         queue<vector<int>> q;
         int level,position,speed;
         q.push({0, 0, 1}); // level, position, Speed
