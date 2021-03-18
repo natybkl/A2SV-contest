@@ -13,16 +13,18 @@ public:
 
             level = car[0];
 
-            position = car[1];
-          
             speed = car[2];
-          
+
+            position = car[1];
+         
             if(position == target) return level;
             
-            if(position + speed < 10000 && position + speed > 0)
+            // wondering if accelerating would get us to target
+            if(position + speed <= 10000 && position + speed > 0)
 
                 q.push({level + 1, position + speed, speed*2});
-
+             
+            // wondering if reversing would workout
             if(speed > 0 && position + speed > target) {
 
                 q.push({level + 1, position, -1});
