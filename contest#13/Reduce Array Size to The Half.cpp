@@ -13,11 +13,6 @@ public:
             um[i]+=1;
         }
         
-        for(auto &a: um) 
-            cout<<a.first<<" "<<a.second<<endl;
-        
-        cout<<endl<<endl<<endl;
-        
         for(auto &a: um) {
             occ.push_back(a.second);
         }
@@ -25,14 +20,16 @@ public:
         sort(occ.begin(), occ.end());
         
         for(int i = occ.size()-1; i >= 0; i--) {
-                if(sz - occ[i] >= hf) {
+                if(sz - occ[i] > hf) {
                     sz-=occ[i];
                     count++;
                     flag = 1;
-                } 
+                } else if(sz - occ[i]) return count + 1;
+                   
+                
         }
         
-        if(flag)  return count;
+        if(flag)  return count + 1;
         else return 1;
         
     }
